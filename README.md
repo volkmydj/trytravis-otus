@@ -11,7 +11,7 @@ gcloud compute instances create reddit-app\
   --machine-type=g1-small \
   --tags puma-server \
   --restart-on-failure \
-  --metadata startup-script-url=gs://avolkov-otus/startup.sh
+  --metadata startup-script-url=gs://avolkov-otus/startup_script.sh
 
 # Create GCP firewall rules
 
