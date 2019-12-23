@@ -21,4 +21,5 @@ someinternalhost_IP = 10.132.0.7
 
 ### Test connections to reddit app
 
-> testapp_IP = 35.205.164.130 testapp_port = 9292
+> testapp_IP = 35.205.164.130 
+testapp_port = 9292
