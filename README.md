@@ -3,7 +3,7 @@ bastion_IP = 35.225.27.208
 someinternalhost_IP = 10.132.0.7
 
 
-# Create GCP instance with startup script
+# Create GCP instance with startup script #
 gcloud compute instances create reddit-app\
   --boot-disk-size=10GB \
   --image-family ubuntu-1604-lts \
@@ -13,7 +13,7 @@ gcloud compute instances create reddit-app\
   --restart-on-failure \
   --metadata startup-script-url=gs://avolkov-otus/startup_script.sh
 
-# Create GCP firewall rules
+# Create GCP firewall rules #
 
 gcloud compute firewall-rules create default-puma-server\
   --allow tcp:9292 \
