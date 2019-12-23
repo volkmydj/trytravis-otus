@@ -15,11 +15,10 @@ someinternalhost_IP = 10.132.0.7
 
 ### Create GCP firewall rules
 
-> gcloud compute firewall-rules create default-puma-server\
-    --allow tcp:9292 \
-    --target-tags=puma-server
+> gcloud compute firewall-rules create default-puma-server\  
+    --allow tcp:9292 \  
+    --target-tags=puma-server  
 
 ### Test connections to reddit app
 
-testapp_IP = 35.205.164.130
-testapp_port = 9292
+> testapp_IP = 35.205.164.130 testapp_port = 9292
