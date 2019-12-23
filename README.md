@@ -1,9 +1,11 @@
 # volkmydj_infra
+
 bastion_IP = 35.225.27.208
 someinternalhost_IP = 10.132.0.7
 
 
 ### Create GCP instance with startup script
+
 > gcloud compute instances create reddit-app\  
     --boot-disk-size=10GB \  
     --image-family ubuntu-1604-lts \  
@@ -21,5 +23,5 @@ someinternalhost_IP = 10.132.0.7
 
 ### Test connections to reddit app
 
-> testapp_IP = 35.205.164.130 
+> testapp_IP = 35.205.164.130
 testapp_port = 9292
