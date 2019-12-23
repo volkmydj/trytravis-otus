@@ -15,10 +15,10 @@ sudo systemctl enable mongod.service
 sudo systemctl start mongod.service
 sudo systemctl status mongod
 
-### Install reddit app ###
+### Install & Start reddit app ###
+cd ~
 git clone -b monolith https://github.com/express42/reddit.git
 cd reddit
 bundle install
 puma -d
-ps aux | grep puma
 
