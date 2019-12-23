@@ -23,5 +23,5 @@ gcloud compute firewall-rules create default-puma-server\
 
 ### Test connections to reddit app
 
-> testapp_IP = 35.205.164.130
+testapp_IP = 35.205.164.130
 testapp_port = 9292
