@@ -6,3 +6,5 @@ sudo apt install -y mongodb-org
 sudo systemctl enable mongod.service
 sudo systemctl start mongod.service
 sudo systemctl status mongod
+####
+
