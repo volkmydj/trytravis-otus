@@ -1,0 +1,10 @@
+{
+    "project_id": "infra-262409",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "image_name": "reddit-base",
+    "image_description": "My Packer Image",
+    "tags": "puma-server",
+    "network": "default",
+    "machine_type:": "f1-micro"
+}
