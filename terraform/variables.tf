@@ -2,6 +2,10 @@ variable project {
   description = "Project ID"
 }
 
+variable app_name {
+  default = "Project app name"
+}
+
 variable region {
   description = "Region"
   default     = "europe-west1"
@@ -27,4 +31,16 @@ variable zone {
 
 variable users {
   default = ["appuser", "appuser1", "appuser2", "appuser3"]
+}
+
+variable service_port {
+  default = 9292
+}
+
+variable service_port_name {
+  default = "tcp-9292"
+}
+variable instances_count {
+  type    = number
+  default = 1
 }

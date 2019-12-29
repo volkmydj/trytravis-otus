@@ -4,19 +4,18 @@ terraform {
 }
 
 provider "google" {
-  #Providerv ersion
+  #Provider version
   version = "2.15"
 
   #ID project
   project = var.project
-  # Credentials
-  #credentials = "${file("Infra-17bbabde7981.json")}"
 
   region = var.region
 }
 
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+  count        = var.instances_count
+  name         = "${var.app_name}${count.index}"
   machine_type = "g1-small"
   zone         = var.zone
   boot_disk {
@@ -33,7 +32,7 @@ resource "google_compute_instance" "app" {
     network = "default"
     access_config {}
   }
-  tags = ["reddit-app"]
+  tags = [var.app_name]
 
   connection {
     type        = "ssh"
@@ -61,4 +60,9 @@ resource "google_compute_firewall" "firewall_puma" {
   }
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
+}
+
+resource "google_compute_project_metadata_item" "app" {
+  key   = "ssh-keys"
+  value = "appuser_web:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZjzH2R0KEq2n/gofT572N82EUKH3dZka5Wn+XAVsxYJt/if2MqWJ5ORiWM5e4zXqYN5N1SnSRiHCpet6HvOYR8VYJLqIycHz8LPvQWFis3JujhQ5FOGqtFGZqDnWfXLs8uzvEyJpunOhaRo8a7MDxEX+EWeYUgFiOl7FqGtoTjlfYXFvNUrInkrNUrwRr2tfvgMLKSXYJBYlh5/6Nth3Q2Mw7zQ7rGR37el6p1LqCw/3sWlE6bRWgHykyz6R3ugu9R5jk1IV6DeJXwJmP1yydnLvRRR7xietIIgCoXmIMQIMDbNtG6PH2HHHgjMiRHa1F8zzZgmMYhnpTkTUxldSH appuser_web"
 }
