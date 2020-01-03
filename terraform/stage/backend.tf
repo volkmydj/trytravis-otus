@@ -5,9 +5,3 @@ terraform {
     prefix = "terraform/state"
   }
 }
-
-# provider "google" {
-#   version = "2.15.0"
-#   project = var.project
-#   region  = var.region
-# }

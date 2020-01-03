@@ -16,22 +16,6 @@ resource "google_compute_instance" "db" {
     access_config {}
   }
   tags = ["reddit-db"]
-
-  # connection {
-  #   type        = "ssh"
-  #   host        = self.network_interface[0].access_config[0].nat_ip
-  #   user        = "appuser"
-  #   agent       = false
-  #   private_key = file(var.private_key)
-  # }
-  #
-  # provisioner "file" {
-  #   source      = "./modules/app/puma.service"
-  #   destination = "/tmp/puma.service"
-  # }
-  # provisioner "remote-exec" {
-  #   script = "files/deploy.sh"
-  # }
 }
 
 resource "google_compute_address" "app_ip" {
