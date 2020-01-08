@@ -10,18 +10,16 @@ provider "google" {
 }
 
 module "storage-bucket-stage" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.3.0"
-  name    = "storage-bucket-otus-stage"
-  #stage    = "stage"
+  source   = "SweetOps/storage-bucket/google"
+  version  = "0.3.0"
+  name     = "storage-bucket-otus-stage"
   location = "europe-west1"
 }
 
 module "storage-bucket-prod" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.3.0"
-  name    = "storage-bucket-otus-prod"
-  #stage    = "production"
+  source   = "SweetOps/storage-bucket/google"
+  version  = "0.3.0"
+  name     = "storage-bucket-otus-prod"
   location = "europe-west1"
 }
 
