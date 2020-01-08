@@ -1,37 +1,36 @@
+terraform {
+  #Terraform version
+  required_version = "~> 0.12.0"
+}
+
 provider "google" {
-  version = "~> 2.5"
+  version = "~> 2.5.0"
   project = "${var.project}"
   region  = "${var.region}"
 }
 
-# module "storage-bucket-stage" {
-#   source   = "git::https://github.com/SweetOps/terraform-google-storage-bucket.git?ref=master"
-#   name     = "storage-bucket-stage"
-#   stage    = "stage"
-#   location = "europe-west1"
-# }
-#
-# module "storage-bucket-prod" {
-#   source   = "git::https://github.com/SweetOps/terraform-google-storage-bucket.git?ref=master"
-#   name     = "storage-bucket-prod"
-#   stage    = "production"
-#   location = "europe-west1"
-# }
-#
-# output storage-stage-bucket_url {
-#   value = "${module.storage-bucket-stage.url}"
-# }
-#
-# output storage-prod-bucket_url {
-#   value = "${module.storage-bucket-prod.url}"
-# }
-
-module "storage-bucket" {
+module "storage-bucket-stage" {
   source  = "SweetOps/storage-bucket/google"
-  version = "0.1.1"
-  name    = ["storage-bucket-otus-stage", "storage-bucket-otus-prod"]
+  version = "0.3.0"
+  name    = "storage-bucket-otus-stage"
+  #stage    = "stage"
+  location = "europe-west1"
 }
 
-output storage-bucket_url {
-  value = "${module.storage-bucket.url}"
+module "storage-bucket-prod" {
+  source  = "SweetOps/storage-bucket/google"
+  version = "0.3.0"
+  name    = "storage-bucket-otus-prod"
+  #stage    = "production"
+  location = "europe-west1"
+}
+
+
+
+output storage-bucket_url-stage {
+  value = "${module.storage-bucket-stage.url}"
+}
+
+output storage-bucket_url-prod {
+  value = "${module.storage-bucket-prod.url}"
 }

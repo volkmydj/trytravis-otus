@@ -27,17 +27,33 @@ resource "google_compute_instance" "app" {
     private_key = file(var.private_key)
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "sudo echo DATABASE_URL=${var.db_reddit_ip} > /tmp/puma.env",
+    ]
+  }
+
   provisioner "file" {
-    source      = "../modules/app/puma.service"
+    source      = "${path.module}/puma.service"
     destination = "/tmp/puma.service"
   }
+  provisioner "file" {
+    source      = "${path.module}/deploy.sh"
+    destination = "/tmp/deploy.sh"
+  }
+
+
   provisioner "remote-exec" {
-    script = "../modules/app/deploy.sh"
+    script = "${path.module}/deploy.sh"
   }
 }
 
 resource "google_compute_address" "app_ip" {
   name = "reddit-app-ip"
+}
+
+resource "null_resource" "app" {
+  count = "${var.provision_enabled ? 1 : 0}"
 }
 
 resource "google_compute_firewall" "firewall_puma" {
