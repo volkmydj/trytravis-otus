@@ -34,17 +34,17 @@ resource "google_compute_instance" "app" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/puma.service"
+    source      = "${path.module}/files/puma.service"
     destination = "/tmp/puma.service"
   }
   provisioner "file" {
-    source      = "${path.module}/deploy.sh"
+    source      = "${path.module}/files/deploy.sh"
     destination = "/tmp/deploy.sh"
   }
 
 
   provisioner "remote-exec" {
-    script = "${path.module}/deploy.sh"
+    script = "${path.module}/files/deploy.sh"
   }
 }
 
