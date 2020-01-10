@@ -23,7 +23,7 @@ module "app" {
   zone              = "${var.zone}"
   app_disk_image    = "${var.app_disk_image}"
   db_reddit_ip      = "${module.db.internal_ip}"
-  provision_enabled = true
+  provision_enabled = false
 }
 
 
