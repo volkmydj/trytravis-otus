@@ -5,8 +5,8 @@ terraform {
 
 provider "google" {
   version = "~> 2.5.0"
-  project = "${var.project}"
-  region  = "${var.region}"
+  project = var.project
+  region  = var.region
 }
 
 module "storage-bucket-stage" {
