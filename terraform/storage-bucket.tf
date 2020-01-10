@@ -1,6 +1,6 @@
 terraform {
   #Terraform version
-  required_version = "~> 0.12.0"
+  required_version = "~> 0.12.19"
 }
 
 provider "google" {
