@@ -1,7 +1,7 @@
-terraform {
-  #Terraform version
-  required_version = "0.12.19"
-}
+# terraform {
+#   #Terraform version
+#   required_version = "0.12.19"
+# }
 
 provider "google" {
   version = "~> 2.15.0"
