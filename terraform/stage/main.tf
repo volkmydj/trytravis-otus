@@ -18,17 +18,18 @@ provider "template" {
 }
 
 module "db" {
-  source          = "../modules/db"
-  public_key_path = "${var.public_key_path}"
-  zone            = "${var.zone}"
-  db_disk_image   = "${var.db_disk_image}"
+  source            = "../modules/db"
+  public_key_path   = "${var.public_key_path}"
+  zone              = "${var.zone}"
+  db_disk_image     = "reddit-db-base-ansible"
+  provision_enabled = false
 }
 
 module "app" {
   source            = "../modules/app"
   public_key_path   = "${var.public_key_path}"
   zone              = "${var.zone}"
-  app_disk_image    = "${var.app_disk_image}"
+  app_disk_image    = "reddit-app-base-ansible"
   db_reddit_ip      = "${module.db.internal_ip}"
   provision_enabled = false
 }

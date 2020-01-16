@@ -17,20 +17,24 @@ resource "google_compute_instance" "db" {
   }
   tags = ["reddit-db"]
 
+
+}
+
+resource "null_resource" "db" {
+  count = var.provision_enabled ? 1 : 0
+  connection {
+    type        = "ssh"
+    host        = google_compute_instance.db.network_interface.0.access_config.0.nat_ip
+    user        = "appuser"
+    agent       = false
+    private_key = file(var.private_key)
+
+  }
   provisioner "remote-exec" {
     inline = [
       "sudo sed -i 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf",
       "sudo systemctl restart mongod",
     ]
-  }
-
-  connection {
-    type        = "ssh"
-    host        = self.network_interface[0].access_config[0].nat_ip
-    user        = "appuser"
-    agent       = false
-    private_key = file(var.private_key)
-
   }
 }
 

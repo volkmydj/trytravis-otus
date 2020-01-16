@@ -17,3 +17,7 @@ variable private_key {
   description = "Path to the private key used for ssh access"
   default     = "~/.ssh/appuser"
 }
+
+variable provision_enabled {
+  default = "false"
+}
