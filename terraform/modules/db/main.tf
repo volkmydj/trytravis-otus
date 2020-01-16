@@ -4,7 +4,7 @@ resource "google_compute_instance" "db" {
   zone         = var.zone
   boot_disk {
     initialize_params {
-      image = "${var.db_disk_image}"
+      image = var.db_disk_image
     }
   }
 
