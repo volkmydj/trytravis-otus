@@ -6,3 +6,5 @@
 .terraform/
 /ansible/service_account.json
 *.retry
+jdauphant.nginx
+vault.key

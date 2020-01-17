@@ -48,3 +48,13 @@ resource "template_file" "dynamic_inventory" {
     db_ext_ip  = "${module.db.db_external_ip}"
   }
 }
+
+# resource "google_compute_firewall" "firewall_nginx" {
+#   name    = "default-allow-nginx"
+#   network = "default"
+#   allow {
+#     protocol = "tcp"
+#     ports    = ["80"]
+#   }
+#   source_ranges = ["0.0.0.0/0"]
+# }
