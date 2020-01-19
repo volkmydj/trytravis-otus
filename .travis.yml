@@ -1,10 +1,18 @@
 dist: trusty
 sudo: required
 language: bash
+env:
+  global:
+  - TF_VERSION="0.12.19"
+  - TFLINT_VERSION="0.13.4"
 before_install:
 - curl https://raw.githubusercontent.com/express42/otus-homeworks/2019-11/run.sh |
   bash
+- wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+  -O /tmp/terraform.zip
+- sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
+- wget https://github.com/terraform-linters/tflint/releases/download/${TFLINT_VERSION}/tflint_linux_amd64.zip
 notifications:
   slack:
     rooms:
-      secure: liV3EYX66pJbjfBJBVqaCgKLmegvKrWvvzctPNDI04wUyPFHCYGG+Xi1Es/EEv5Qbzp19eRmvGrI/+k6oPPwosP0Qp3DDtKo4t8SzxNU1wuIGyjgnUCZdYEo0BavDnbzWQLj9YxxeEtQMphqKp5n5O3rMfhN1HdYb/66JroY2h6KA20JKnSya5MJGj16FnDRgiq04Z5awBHIx+i+0QvVweM9gBc9aOWJO8wGSPtxV7alx/3lWG86BY3y2VTzSXB+Pfm5E8PxFcUkTdAGbjKpwSvj95ev0Wlq3aMYF/adWJwiz8SfKKRiuQP9y7hYfCXBCzmrs3EzfX8Vedn84ipUKnPpcCgYEqEYJ2Cd/e6/KZGrE4FmL8jTSUw/1LNcBKzVDfxpcYC1ZqtAf8ttaLAqopLxZRhunUta5kMw4CGOKF/2AR2g2Pgq1noE+gMjxsjkAY/Vs3CHyUKMuwyRXe0TKyXSMixFnld5rgHth2mF8cf4tpdpaslYIdEJw12HiQjRbsah2GUfXAtTF23rYqbnUpTnbxF697puWXxdzXFBEY+6g66fjsa3BTN/IqDmAdIP26FNuoJuoIC8baM3NR23m/ApfpqqGZjBmEuOOj8nAnl8qRBiff944ac8xBCIzFrYfUpcEJAQAPI4DUqf6n0EA7uu4Ug+89/YgCbRC0XL76o=
+      secure: X9gQpUYa43+Tc0VkiuhK8N6NUO4zDgawOfH4b2xHZy/rFQ2xxptD9CCtVrAD3QMXdi7bS25jTKsBgQc9Wm5hyaJ+cpqE6HVzmJzOLk9oUCjPKsmh9/QYPJgSU9EGlXqDIQinVPl3YkurPpyMzAJsjkGfELGGCR8NBGle3/EUEc1JeRBi0y7ITWYO4ZdqSG3yz84EFaqPEnwB/SP8XoVYsLgqglNJVrDyCkB7i29bwqOOgwUqEKeby/NJrHI6WIXrwp0m8IrrATS8fal+oB+jbX4etKg3Z396fesE3jrbDyv8DCfGpqBEUIaqouHJfCD/weZgqY59LPsuJP1kZYj69FlvVj3lkWtu7TPrUI5Q4O3/vYlbVz1/2g3Ctk09bIgmj97zGovrlVwaM25qWlFhfLdo/0bpLt5O8Bs7ItxLmAgHAylVNMllK5zQic/748glKqnxbMrg6sJYEDyO0K2p1OUgo5NZi2k+uR9YpcgbSGX5wkLnA6ZoNrXxkQDTTUvDw4ZAK8n9ZvN6OV/pMhg4jcAkeoOQ5nDKuPApC/bHAfaAIPnDwPKF3UdXO19wurGlddfNShCinhRssM21AltXUsDFu0dfRT24LvJwQrHRiR5JzVzuCCbkwGqqChqk1A8kY2Zuqd1d17idzVynRooKxQ2/5a4uiV5fEeggGCr/tYo=
