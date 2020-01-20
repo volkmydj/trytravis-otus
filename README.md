@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/volkmydj/trytravis-otus.svg?branch=ansible-3)](https://travis-ci.com/volkmydj/trytravis-otus)
+
 # volkmydj_infra
 
 bastion_IP = 35.225.27.208
